@@ -1,0 +1,35 @@
+﻿using Business.models;
+using Microsoft.AspNetCore.Mvc;
+using ProdutosORM.Models;
+using System.Diagnostics;
+
+namespace ProdutosORM.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        private static Produto produtoService = new Produto();
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.produtos = produtoService.BuscaTodos();
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+}

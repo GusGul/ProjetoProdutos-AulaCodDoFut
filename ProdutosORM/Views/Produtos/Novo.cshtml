@@ -1,0 +1,40 @@
+﻿@using Business.models
+@{
+    ViewData["Title"] = "Novo Produto";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Novo produto</h1>
+</div>
+
+<hr>
+
+<form action="/produtos/cadastrar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="dataCriacao">Data de Criação</label>
+        <input type="date" class="form-control" id="dataCriacao" name="data_Criacao" placeholder="Digite a descrição">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="dataValidade">Data de Validade</label>
+        <input type="date" class="form-control" id="dataValidade" name="data_Validade" placeholder="Digite a descrição">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="quantidadeEstoque">Quantidade em Estoque</label>
+        <input type="number" class="form-control" id="quantidadeEstoque" name="quantidade_Estoque" placeholder="Digite a quantidade em estoque">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a href="/produtos" class="btn btn-default">Voltar</a>
+</form>

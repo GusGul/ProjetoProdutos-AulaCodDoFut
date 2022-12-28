@@ -1,0 +1,55 @@
+﻿@using Business.models;
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista de produtos</h1>
+</div>
+<br />
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descricao</th>
+      <th scope="col">Data Criação</th>
+      <th scope="col">Data Validade</th>
+      <th scope="col">Qtd em Estoque</th>
+      <th style="width: 30px;" scope="col"></th>
+      <th style="width: 30px;" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Produto produto in ViewBag.produtos)
+    {
+        <tr>
+            <th scope="row">@produto.Id</th>
+                <td>@produto.Nome</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.Data_Criacao.ToShortDateString()</td>
+                <td>@produto.Data_Validade.ToShortDateString()</td>
+                <td>@produto.Quantidade_Estoque</td>
+            <td>
+                    <a href="/produtos/@produto.Id/editar" class="btn btn-warning">Editar</a>
+            </td>
+            <td>
+                <a href="#" onclick="excluir(@produto.Id)" class="btn btn-danger">Apagar</a>
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>
+
+<div class="text-right">
+    <a href="/produtos/novo" class="btn btn-primary">Novo Produto</a>
+</div>
+
+<script>
+    const excluir = (id) => {
+        if (confirm('Confirma?')) {
+            window.location.href = '/produtos/' + id + '/deletar';
+        }
+    }
+</script>
